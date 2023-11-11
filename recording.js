@@ -21,19 +21,19 @@ document.addEventListener('DOMContentLoaded', function () {
       navigator.mediaDevices.getUserMedia({ audio: true })
         .then((stream) => {
           mediaRecorder = new MediaRecorder(stream);
-  
           mediaRecorder.ondataavailable = (event) => {
             if (event.data.size > 0) {
               chunks.push(event.data);
             }
           };
-  
           mediaRecorder.onstop = () => {
             const blob = new Blob(chunks, { type: 'audio/wav' });
             chunks = [];
             const audioURL = URL.createObjectURL(blob);
             audioElement.src = audioURL;
-            return audioURL;
+            const spawn = require("child_process").spawn;
+            const pythonProcess = spawn('python',["specPlotter.py"]);
+            return blob;
             // Create a download link
             // const downloadLink = document.createElement('a');
             // downloadLink.href = audioURL;
