@@ -35,22 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
             chunks = [];
             const audioURL = URL.createObjectURL(blob);
             audioElement.src = audioURL;
-
-            fetch('/process_variable', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ data: variableToSend }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                const resultDiv = document.getElementById('result');
-                resultDiv.textContent = `Result from Python: ${data.result}`;
-            })
-            .catch(error => {
-                console.error('Error sending data to Python:', error);
-            });
             // const spawn = require("child_process").spawn;
             // arg1 = result;
             // const pythonProcess = spawn('python',["specPlotter.py", arg1]);

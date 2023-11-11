@@ -19,14 +19,29 @@ myAudio.onpause = function() {
 // Catherine Ryu, Mandarin Tone Perception & Production Team, and Michigan State University Libraries. "mā by FV1." Tone Perfect: Multimodal Database for Mandarin Chinese. Accessed 1 January 2022. https://tone.lib.msu.edu/tone/1187
 
 function callPython() {
-  fetch("http://localhost:5000/drawGraph")
-  .then(response => response.text())
-  .then(data => {
-      const responseDiv = document.getElementById('response');
-      responseDiv.innerHTML = data;
-      console.log()
+  // fetch("http://localhost:5000/drawGraph")
+  // .then(response => response.text())
+  // .then(data => {
+  //     const responseDiv = document.getElementById('response');
+  //     responseDiv.innerHTML = data;
+  //     console.log()
+  // })
+  // .catch(error => console.error('Error:', error));
+  fetch('/process_variable', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ data: variableToSend }),
   })
-  .catch(error => console.error('Error:', error));
+  .then(response => response.json())
+  .then(data => {
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = `Result from Python: ${data.result}`;
+  })
+  .catch(error => {
+      console.error('Error sending data to Python:', error);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function() {

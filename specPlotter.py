@@ -58,9 +58,6 @@ def draw_graph(data):
     # plt.savefig('filename.png')
     plt.show()
     plt.close()
-    
-    
-    
     return returnImage
 
 if __name__ == '__main__':
