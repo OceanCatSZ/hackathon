@@ -4,7 +4,7 @@ var isPlaying = false;
 
 function togglePlay() {
   myAudio.play();
-  //  isPlaying ? myAudio.pause() : myAudio.play();
+  isPlaying ? myAudio.pause() : myAudio.play();
 };
 
 myAudio.onplaying = function() {
