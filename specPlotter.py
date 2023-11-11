@@ -22,8 +22,6 @@ print("Hello from beginning")
 @app.route('/process_variable', methods=['POST'])
 def process_variable():
     data_from_js = request.json.get('data')
-
-    # Your Python logic here
     result = draw_graph(data_from_js)
 
     return jsonify({'result': result})
@@ -64,8 +62,6 @@ def draw_graph(data):
     
     
     return returnImage
-
-draw_graph()
 
 if __name__ == '__main__':
     app.run(debug=True)
