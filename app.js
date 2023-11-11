@@ -1,7 +1,3 @@
-function displayRandomNumber() { //Testing function for website
-    const randomNumber = Math.floor(Math.random() * 20) + 1;
-    document.getElementById('randomNumberDisplay').innerText = 'Random Number: ' + randomNumber;
-}
 // audio with pause function
 var myAudio = new Audio("sound_filename.mp3");
 var isPlaying = false;
@@ -17,6 +13,13 @@ myAudio.onpause = function() {
   isPlaying = false;
 };
 // ends here
+
+
+
+function displayRandomNumber() { //Testing function for website
+    const randomNumber = Math.floor(Math.random() * 20) + 1;
+    document.getElementById('randomNumberDisplay').innerText = 'Random Number: ' + randomNumber;
+}
 
 // Event listener for the 'Start Learning Now' button
 document.getElementById('startLearningButton').addEventListener('click', displayRandomNumber);
