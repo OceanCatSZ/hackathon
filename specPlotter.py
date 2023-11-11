@@ -14,9 +14,12 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 import json
+import sys
 
+audio = sys.argv[1]
 sns.set() # Use seaborn's default style to make attractive graphs
 plt.rcParams['figure.dpi'] = 100 # Show nicely large images in this notebook
+
 
 snd = parselmouth.Sound("Recording.mp3")
 # snd is now a Parselmouth Sound object, and we can access its values and other properties to plot them with the common matplotlib Python library:
