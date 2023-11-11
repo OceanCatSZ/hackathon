@@ -3,11 +3,14 @@
 from flask import Flask
 from flask import json
 from flask import jsonify
+from flask import Flask, send_file
 
 app = Flask(__name__)
 
 import parselmouth
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 import json
@@ -41,9 +44,11 @@ def draw_graph():
     plt.twinx()
     draw_intensity(intensity)
     plt.xlim([snd.xmin, snd.xmax])
-    # plt.show()
     plt.savefig('filename.png')
-    return True
+    plt.close()
+    
+    return send_file('filename.png', mimetype='image/png')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
