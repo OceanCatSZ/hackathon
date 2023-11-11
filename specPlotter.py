@@ -16,40 +16,19 @@ import seaborn as sns
 import json
 import sys
 
-
+print("Hello from beginning")
 
 @app.route('/drawGraph')
-def draw_graph(recording: str):
-    audio = sys.argv[1]
-sns.set() # Use seaborn's default style to make attractive graphs
-    plt.rcParams['figure.dpi'] = 100 # Show nicely large images in this notebook
-    snd = parselmouth.Sound(recording)
+def draw_graph():
+    print("Hello")
 
+    recording = sys.argv[0] 
+    print("passed the recording")
 
-# snd is now a Parselmouth Sound object, and we can access its values and other properties to plot them with the common matplotlib Python library:
-    def draw_spectrogram(spectrogram, dynamic_range=70):
-        X, Y = spectrogram.x_grid(), spectrogram.y_grid()
-        sg_db = 10 * np.log10(spectrogram.values)
-        plt.pcolormesh(X, Y, sg_db, vmin=sg_db.max() - dynamic_range, cmap='afmhot')
-        plt.ylim([spectrogram.ymin, spectrogram.ymax])
-        plt.xlabel("time [s]")
-        plt.ylabel("frequency [Hz]")
-
-    def draw_intensity(intensity):
-        plt.plot(intensity.xs(), intensity.values.T, linewidth=3, color='w')
-        plt.plot(intensity.xs(), intensity.values.T, linewidth=1)
-        plt.grid(False)
-        plt.ylim(0)
-        plt.ylabel("intensity [dB]")
-
-@app.route('/hello')
-
-
-def draw_graph(recording: str):
+    # From recordings.js, spawns a python process in the form "python specPlotter.py
     sns.set() # Use seaborn's default style to make attractive graphs
     plt.rcParams['figure.dpi'] = 100 # Show nicely large images in this notebook
     snd = parselmouth.Sound(recording)
-
 # snd is now a Parselmouth Sound object, and we can access its values and other properties to plot them with the common matplotlib Python library:
     def draw_spectrogram(spectrogram, dynamic_range=70):
         X, Y = spectrogram.x_grid(), spectrogram.y_grid()
@@ -65,7 +44,6 @@ def draw_graph(recording: str):
         plt.grid(False)
         plt.ylim(0)
         plt.ylabel("intensity [dB]")
-
 
     intensity = snd.to_intensity()
     spectrogram = snd.to_spectrogram()
@@ -74,13 +52,12 @@ def draw_graph(recording: str):
     plt.twinx()
     draw_intensity(intensity)
     plt.xlim([snd.xmin, snd.xmax])
-    plt.savefig('filename.png')
+    # plt.savefig('filename.png')
+    plt.show()
     plt.close()
     
     return send_file('filename.png', mimetype='image/png')
-def main():
-    mystr = "Recording.mp3"
-    draw_graph(mystr)
+draw_graph()
 
 if __name__ == '__main__':
     app.run(debug=True)

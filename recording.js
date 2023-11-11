@@ -28,11 +28,12 @@ document.addEventListener('DOMContentLoaded', function () {
           };
           mediaRecorder.onstop = () => {
             const blob = new Blob(chunks, { type: 'audio/wav' });
+            const result = chunks
             chunks = [];
             const audioURL = URL.createObjectURL(blob);
             audioElement.src = audioURL;
             const spawn = require("child_process").spawn;
-            arg1 = blob;
+            arg1 = audioURL;
             const pythonProcess = spawn('python',["specPlotter.py", arg1]);
             // Create a download link
             // const downloadLink = document.createElement('a');
