@@ -52,7 +52,7 @@ def draw_graph(data):
 
     intensity = snd.to_intensity()
     spectrogram = snd.to_spectrogram()
-    plt.figure()
+    returnImage = plt.figure()
     draw_spectrogram(spectrogram)
     plt.twinx()
     draw_intensity(intensity)
@@ -61,7 +61,9 @@ def draw_graph(data):
     plt.show()
     plt.close()
     
-    return send_file('filename.png', mimetype='image/png')
+    
+    
+    return returnImage
 
 if __name__ == '__main__':
     app.run(debug=True)
