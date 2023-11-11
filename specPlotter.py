@@ -14,10 +14,37 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 import json
+import sys
 
 
 
 @app.route('/drawGraph')
+def draw_graph(recording: str):
+    audio = sys.argv[1]
+sns.set() # Use seaborn's default style to make attractive graphs
+    plt.rcParams['figure.dpi'] = 100 # Show nicely large images in this notebook
+    snd = parselmouth.Sound(recording)
+
+
+# snd is now a Parselmouth Sound object, and we can access its values and other properties to plot them with the common matplotlib Python library:
+    def draw_spectrogram(spectrogram, dynamic_range=70):
+        X, Y = spectrogram.x_grid(), spectrogram.y_grid()
+        sg_db = 10 * np.log10(spectrogram.values)
+        plt.pcolormesh(X, Y, sg_db, vmin=sg_db.max() - dynamic_range, cmap='afmhot')
+        plt.ylim([spectrogram.ymin, spectrogram.ymax])
+        plt.xlabel("time [s]")
+        plt.ylabel("frequency [Hz]")
+
+    def draw_intensity(intensity):
+        plt.plot(intensity.xs(), intensity.values.T, linewidth=3, color='w')
+        plt.plot(intensity.xs(), intensity.values.T, linewidth=1)
+        plt.grid(False)
+        plt.ylim(0)
+        plt.ylabel("intensity [dB]")
+
+@app.route('/hello')
+
+
 def draw_graph(recording: str):
     sns.set() # Use seaborn's default style to make attractive graphs
     plt.rcParams['figure.dpi'] = 100 # Show nicely large images in this notebook

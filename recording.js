@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const audioURL = URL.createObjectURL(blob);
             audioElement.src = audioURL;
             const spawn = require("child_process").spawn;
-            const pythonProcess = spawn('python',["specPlotter.py"]);
-            return blob;
+            arg1 = blob;
+            const pythonProcess = spawn('python',["specPlotter.py", arg1]);
             // Create a download link
             // const downloadLink = document.createElement('a');
             // downloadLink.href = audioURL;
