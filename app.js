@@ -2,11 +2,21 @@ function displayRandomNumber() { //Testing function for website
     const randomNumber = Math.floor(Math.random() * 20) + 1;
     document.getElementById('randomNumberDisplay').innerText = 'Random Number: ' + randomNumber;
 }
+// audio with pause function
+var myAudio = new Audio("sound_filename.mp3");
+var isPlaying = false;
 
-function sound() {
-    var snd = new Audio("sound_filename.mp3");
-    snd.play(); // play that sound
-}
+function togglePlay() {
+  isPlaying ? myAudio.pause() : myAudio.play();
+};
+
+myAudio.onplaying = function() {
+  isPlaying = true;
+};
+myAudio.onpause = function() {
+  isPlaying = false;
+};
+// ends here
 
 // Event listener for the 'Start Learning Now' button
 document.getElementById('startLearningButton').addEventListener('click', displayRandomNumber);
