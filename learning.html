@@ -12,9 +12,9 @@
             <div class="navbar__container">
                 <a href="index.html" id="navbar__logo">Tonality音階</a>
                 <ul class="navbar__menu">
-                    <li class="navbar__item">
+                    <!-- <li class="navbar__item">
                         <a href="#startLearningTab" class="navbar__links" id="startLearningTab">Start Learning</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>
@@ -28,8 +28,14 @@
                     first tone
                 </p>
                 <script src="app.js"></script>
-                <button onClick="togglePlay()">Click here to hear.</button> 
+                <!-- New code -->
+                <p style = "font-size: 300%; text-align: center;">
+                    <button class= "button1" onClick="togglePlay()">Click here to hear.</button> 
+                </p>
+                <!-- New code -->
+                <button onclick="callPython()">Call Python Function</button>
+                <div id="response">Response from server will be displayed here</div>
             </div>
-        </nav>
+        </nav> 
     </body>
 </html>

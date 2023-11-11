@@ -1,9 +1,10 @@
 // audio with pause function
-var myAudio = new Audio("sound_filename.mp3");
+var myAudio = new Audio("Recordings\\a1_FV1_MP3.mp3");
 var isPlaying = false;
 
 function togglePlay() {
-  isPlaying ? myAudio.pause() : myAudio.play();
+  myAudio.play();
+  //  isPlaying ? myAudio.pause() : myAudio.play();
 };
 
 myAudio.onplaying = function() {
@@ -13,27 +14,15 @@ myAudio.onpause = function() {
   isPlaying = false;
 };
 // ends here
+//unshul
 
+// Catherine Ryu, Mandarin Tone Perception & Production Team, and Michigan State University Libraries. "mā by FV1." Tone Perfect: Multimodal Database for Mandarin Chinese. Accessed 1 January 2022. https://tone.lib.msu.edu/tone/1187
 
-
-function displayRandomNumber() { //Testing function for website
-    const randomNumber = Math.floor(Math.random() * 20) + 1;
-    document.getElementById('randomNumberDisplay').innerText = 'Random Number: ' + randomNumber;
+function callPython() {
+  fetch("http://localhost:5000/hello")
+  .then(response => response.text())
+  .then(data => {
+    const responseDiv = document.getElementById('response')
+    responseDiv.innerHTML = data.message;
+  })
 }
-
-// Event listener for the 'Start Learning Now' button
-document.getElementById('startLearningButton').addEventListener('click', displayRandomNumber);
-
-// Event listener for the 'Start Learning' tab
-document.getElementById('startLearningTab').addEventListener('click', function () {
-    // Clear existing content
-    document.querySelector('.hero__heading').innerText = '';
-    document.querySelector('.hero__description').innerText = '';
-
-    // Update with new content for 'Start Learning'
-    document.querySelector('.hero__heading').innerText = 'Start Learning';
-    document.querySelector('.hero__description').innerText = 'Welcome to the learning page!';
-
-    // Call the function to display a random number
-    displayRandomNumber();
-});

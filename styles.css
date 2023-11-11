@@ -88,10 +88,23 @@
     color: #fff;
     transition: all 0.3s ease; 
 }
+/* New code 11/11 10:00am */
 
-.midtext {
-    text-align: center;
+.display {
+    position: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    display: flex;
 }
+.midtext{
+    position: center;
+    align-items: center;
+    display: block;
+    justify-content: center;
+
+}
+/* New code 11/11 10:00am */
 
 .button1 {
     display: flex;
