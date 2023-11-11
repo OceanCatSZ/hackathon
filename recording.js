@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const audioURL = URL.createObjectURL(blob);
             audioElement.src = audioURL;
 
-            fetch('/draw_graph', {
+            fetch('/process_variable', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',

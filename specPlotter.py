@@ -34,7 +34,7 @@ def draw_graph(data):
     sns.set() # Use seaborn's default style to make attractive graphs
     plt.rcParams['figure.dpi'] = 100 # Show nicely large images in this notebook
     snd = parselmouth.Sound(data)
-# snd is now a Parselmouth Sound object, and we can access its values and other properties to plot them with the common matplotlib Python library:
+    # snd is now a Parselmouth Sound object, and we can access its values and other properties to plot them with the common matplotlib Python library:
     def draw_spectrogram(spectrogram, dynamic_range=70):
         X, Y = spectrogram.x_grid(), spectrogram.y_grid()
         sg_db = 10 * np.log10(spectrogram.values)
@@ -62,7 +62,6 @@ def draw_graph(data):
     plt.close()
     
     return send_file('filename.png', mimetype='image/png')
-draw_graph()
 
 if __name__ == '__main__':
     app.run(debug=True)
