@@ -22,7 +22,21 @@ function callPython() {
   fetch("http://localhost:5000/hello")
   .then(response => response.text())
   .then(data => {
-    const responseDiv = document.getElementById('response')
-    responseDiv.innerHTML = data.message;
+      const responseDiv = document.getElementById('response');
+      responseDiv.innerHTML = data;
+      console.log()
   })
+  .catch(error => console.error('Error:', error));
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  const numbers = [1, 2, 3, 4, 5, 6];
+  let currentIndex = 0;
+
+  const numberDisplay = document.getElementById("numberDisplay");
+
+  numberDisplay.addEventListener("click", function() {
+      numberDisplay.textContent = numbers[currentIndex];
+      currentIndex = (currentIndex + 1) % numbers.length;
+  });
+});
