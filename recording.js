@@ -28,20 +28,32 @@ document.addEventListener('DOMContentLoaded', function () {
           };
           mediaRecorder.onstop = () => {
             const blob = new Blob(chunks, { type: 'audio/wav' });
-            const result = chunks
+
+            result = chunks.map(x => x)
+
+            const variableToSend = result;
             chunks = [];
             const audioURL = URL.createObjectURL(blob);
             audioElement.src = audioURL;
-            const spawn = require("child_process").spawn;
-            arg1 = audioURL;
-            const pythonProcess = spawn('python',["specPlotter.py", arg1]);
-            // Create a download link
-            // const downloadLink = document.createElement('a');
-            // downloadLink.href = audioURL;
-            // downloadLink.download = 'recorded_audio.wav';
-            // document.body.appendChild(downloadLink);
-            // downloadLink.click();
-            // document.body.removeChild(downloadLink);
+
+            fetch('/draw_graph', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ data: variableToSend }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('result');
+                resultDiv.textContent = `Result from Python: ${data.result}`;
+            })
+            .catch(error => {
+                console.error('Error sending data to Python:', error);
+            });
+            // const spawn = require("child_process").spawn;
+            // arg1 = result;
+            // const pythonProcess = spawn('python',["specPlotter.py", arg1]);
           };
           mediaRecorder.start();
         })

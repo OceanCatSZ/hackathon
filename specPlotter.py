@@ -4,6 +4,7 @@ from flask import Flask
 from flask import json
 from flask import jsonify
 from flask import Flask, send_file
+from flask import request, jsonify
 
 app = Flask(__name__)
 
@@ -18,17 +19,21 @@ import sys
 
 print("Hello from beginning")
 
-@app.route('/drawGraph')
-def draw_graph():
-    print("Hello")
+@app.route('/process_variable', methods=['POST'])
+def process_variable():
+    data_from_js = request.json.get('data')
 
-    recording = sys.argv[0] 
-    print("passed the recording")
+    # Your Python logic here
+    result = draw_graph(data_from_js)
 
+    return jsonify({'result': result})
+
+
+def draw_graph(data):
     # From recordings.js, spawns a python process in the form "python specPlotter.py
     sns.set() # Use seaborn's default style to make attractive graphs
     plt.rcParams['figure.dpi'] = 100 # Show nicely large images in this notebook
-    snd = parselmouth.Sound(recording)
+    snd = parselmouth.Sound(data)
 # snd is now a Parselmouth Sound object, and we can access its values and other properties to plot them with the common matplotlib Python library:
     def draw_spectrogram(spectrogram, dynamic_range=70):
         X, Y = spectrogram.x_grid(), spectrogram.y_grid()
