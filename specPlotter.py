@@ -16,9 +16,8 @@ import seaborn as sns
 import json
 
 
-@app.route('/hello')
 
-
+@app.route('/drawGraph')
 def draw_graph(recording: str):
     sns.set() # Use seaborn's default style to make attractive graphs
     plt.rcParams['figure.dpi'] = 100 # Show nicely large images in this notebook
@@ -52,7 +51,6 @@ def draw_graph(recording: str):
     plt.close()
     
     return send_file('filename.png', mimetype='image/png')
-
 def main():
     mystr = "Recording.mp3"
     draw_graph(mystr)
