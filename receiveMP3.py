@@ -1,4 +1,6 @@
 from flask import Flask, request
+import base64
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -10,7 +12,6 @@ def upload_file():
     if file.filename == '':
         return 'No selected file', 400
     if file:
-        # Process the file here (e.g., save it or analyze it)
         process_mp3_file(file)
         print("hello")
         file.save(file.filename)
@@ -18,8 +19,8 @@ def upload_file():
 
 def process_mp3_file(mp3_file):
     print("Hello world")
-    # Process the MP3 file
-    # Example: print file name
     print(f"Processing file: {mp3_file.filename}")
+    
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
