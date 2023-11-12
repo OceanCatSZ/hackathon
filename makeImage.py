@@ -41,7 +41,7 @@ def returnImage():
     buf.close()
     return im
     
-def testReturn(image: Image):
-    return 0
+# def testReturn(image: Image):
+#     return 0
     
-testReturn(returnImage())
+# testReturn(returnImage())

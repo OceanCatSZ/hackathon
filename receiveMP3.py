@@ -18,6 +18,7 @@ def upload_file():
         file.save(file.filename)
         return 'From Python: File successfully uploaded', 200
 
+# processing audio and produce an image
 def process_mp3_file(mp3_file):
     print("Hello world")
     print(f"Processing file: {mp3_file.filename}")

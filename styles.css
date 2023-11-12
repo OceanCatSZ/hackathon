@@ -114,11 +114,12 @@
     display: flex;
 }
 .midtext{
-    position: center;
+    /* position: center;
     align-items: center;
     display: block;
-    justify-content: center;
-
+    justify-content: center; */
+    padding: 20px;
+    margin-bottom: 20px;
 }
 /* New code 11/11 10:00am */
 
