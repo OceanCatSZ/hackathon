@@ -3,7 +3,7 @@ import base64
 from flask import Flask, jsonify
 
 app = Flask(__name__)
-
+print("HELLO FROM PYTHON")
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:

@@ -61,6 +61,7 @@ function downloadRecording() {
 }
 
 function handleFile() {
+  console.log("In call file")
   const fileInput = document.getElementById('fileInput');
   sendMP3(fileInput)
 }
