@@ -33,7 +33,7 @@ function startRecording() {
             };
 
             mediaRecorder.onstop = () => {
-                const audioBlob = new Blob(chunks, { type: 'audio/wav' });
+                const audioBlob = new Blob(chunks, { type: 'audio/mp3' });
                 const audioUrl = URL.createObjectURL(audioBlob);
 
                 const audioPlayer = document.getElementById('audioPlayer');
@@ -48,15 +48,32 @@ function startRecording() {
 }
 
 function downloadRecording() {
-    const audioBlob = new Blob(chunks, { type: 'audio/wav' });
+    const audioBlob = new Blob(chunks, { type: 'audio/mp3' });
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(audioBlob);
-    downloadLink.download = 'recorded_audio.wav';
+    downloadLink.download = 'recorded_audio.mp3';
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
 }
 
-function getURL(){
-  return audioURL;
+function handleFile() {
+  const fileInput = document.getElementById('fileInput');
+  if (fileInput.files.length > 0) {
+      const selectedFile = fileInput.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+          // The content of the file is stored in e.target.result
+          const fileContent = e.target.result;
+
+          // You can now use the file content as needed
+          console.log('File Content:', fileContent);
+      };
+
+      // Read the file as text
+      reader.readAsText(selectedFile);
+  } else {
+      console.error('No file selected.');
+  }
 }
