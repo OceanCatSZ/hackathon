@@ -80,12 +80,9 @@ function sendMP3(filePath) {
     });
   }
   const filePath = "Recording.mp3"; 
-  console.log("Javascript")
   sendMP3(filePath);
-  // const FormData 
-
+// 
 function handleFile() {
-  console.log("Javascript")
   const fileInput = document.getElementById('fileInput');
   sendMP3(fileInput)
 }
