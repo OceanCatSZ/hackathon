@@ -15,12 +15,11 @@ def upload_file():
         process_mp3_file(file)
         print("hello")
         file.save(file.filename)
-        return 'File successfully uploaded', 200
+        return 'From Python: File successfully uploaded', 200
 
 def process_mp3_file(mp3_file):
     print("Hello world")
     print(f"Processing file: {mp3_file.filename}")
     
- 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
