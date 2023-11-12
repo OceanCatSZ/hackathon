@@ -35,10 +35,14 @@
                 <!-- New code -->
                 <script src="recording.js"></script>
                 <p style = "font-size: 300%; text-align: center;">
-                    <button class= "button1" id = "recordButton" >Click here to record your voice.</button> 
-                    <audio id="audioElement" controls></audio>
+                    <button id="recordButton" onclick="toggleRecording()">Start Recording</button>
+                    <audio controls>
+                        <source src="getURL()" type="audio/mp3">
+                    </audio>
                 </p>
-                <button onclick="callPython()">Call Python</button> 
+                <p style = "font-size: 300%; text-align: center;">
+                    <button id="downloadButton" onclick="downloadRecording()" disabled>Download Recording</button>
+                </p>
                 <div id="response"></div>
                 <body>
                     <p style = "font-size: 300%; text-align: center;" id = "numberDisplay">Click me!</p>
