@@ -62,21 +62,5 @@ function downloadRecording() {
 
 function handleFile() {
   const fileInput = document.getElementById('fileInput');
-  if (fileInput.files.length > 0) {
-      const selectedFile = fileInput.files[0];
-      const reader = new FileReader();
-
-      reader.onload = function (e) {
-          // The content of the file is stored in e.target.result
-          const fileContent = e.target.result;
-
-          // You can now use the file content as needed
-          console.log('File Content:', fileContent);
-      };
-
-      // Read the file as text
-      reader.readAsText(selectedFile);
-  } else {
-      console.error('No file selected.');
-  }
+  sendMP3(fileInput)
 }
