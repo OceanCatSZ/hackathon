@@ -199,6 +199,7 @@
         font-size: 1.6rem;
     }
     #navbar__logo {
+        font-size: large;
         padding-left: 25px;
     }
    
@@ -251,27 +252,29 @@
 }
 /* hero section */
 .hero {
-    background: #000000;
-    background: linear-gradient(to right, #161616, #000000);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background: #ffffff;
     padding: 200px 0;
 }
 
 .hero__container {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    height: 90%;
+    height: 50%;
     text-align: center;
     padding: 30px;
 }
 
 .hero__heading {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 100px;
     margin-bottom: 24px;
-    color: #fff;
+    color: #ea13bf;
 }
 
 .hero__heading span {
