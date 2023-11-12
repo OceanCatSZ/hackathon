@@ -1,6 +1,5 @@
 let mediaRecorder;
 let chunks = [];
-let audioURL;
 
 // import sendMP3 file
 // const sendMP3 = require("./sendMP3")
@@ -85,7 +84,6 @@ function sendMP3(filePath) {
   // const FormData 
 
 function handleFile() {
-  console.log("In call file")
   const fileInput = document.getElementById('fileInput');
   sendMP3(fileInput)
 }
