@@ -2,6 +2,9 @@ let mediaRecorder;
 let chunks = [];
 let audioURL;
 
+// import sendMP3 file
+const sendMP3 = require("./sendMP3")
+
 function toggleRecording() {
     const recordButton = document.getElementById('recordButton');
     const audioPlayer = document.getElementById('audioPlayer');

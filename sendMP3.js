@@ -1,6 +1,4 @@
 function sendMP3(filePath) {
-  const filePath = 'sound_filename.mp3'; // Replace with the path to your MP3 file
-
   const FormData = require('form-data');
   const fs = require('fs');
   const axios = require('axios');
