@@ -41,9 +41,7 @@ def returnImage():
     buf.close()
     return im
     
-
 def testReturn(image: Image):
-    # Send over to javascript
     return 0
     
 testReturn(returnImage())
