@@ -53,3 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+function blobToMp3(blob) {
+  // Do something with the blob
+  // For example, you might upload it to a server, or store it locally
+}
