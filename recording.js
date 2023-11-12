@@ -60,6 +60,6 @@ function downloadRecording() {
 }
 
 function handleFile() {
-    const fileInput = document.getElementById('fileInput');
-    sendMP3(fileInput)
+  const fileInput = document.getElementById('fileInput');
+  sendMP3(fileInput)
 }
