@@ -254,7 +254,10 @@
 /* hero section */
 .hero {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background: #ffffff;
+    /* background: url('wuhan.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding: 200px 0; */
+    background:#ffffff;
     padding: 200px 0;
 }
 
@@ -275,7 +278,10 @@
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 100px;
     margin-bottom: 24px;
-    color: #ea13bf;
+    background: linear-gradient(to right, #ff0000, #ff00d9); /* Adjust colors as needed */
+    /* Set the text color to transparent to show the gradient text color */
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .hero__heading span {
@@ -298,12 +304,10 @@
 }
 .hero__description {
     font-size: 30px;
-    background: #da22ff;
-    background: -webkit-linear-gradient (
-        to right,
-        #9114ff,
-        #da22ff
-    );
+    background: linear-gradient(to right, #ff0000, #ff00d9); /* Adjust colors as needed */
+    /* Set the text color to transparent to show the gradient text color */
+    -webkit-background-clip: text;
+    color: transparent;
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
