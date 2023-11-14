@@ -6,6 +6,8 @@
         <title>Website</title>
         <link rel="stylesheet" href="styles.css">
     </head>
+
+    
     <body>
         <!-- Navbar Section -->
         <nav class="navbar">
@@ -20,6 +22,9 @@
         </nav>
         <!-- display section -->
         <nav class = "display">
+
+            <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
+            <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
             <div class = "midtext">
                 <p style = "font-size: 300%; text-align: center;">
                     ā
@@ -47,8 +52,8 @@
                 <script src="recording.js"></script>
                 <form id = "uploadForm">
                     <label for="fileInput">Choose a file:</label>
-                    <input type="file" id="mp3File" accept=".mp3">
-                    <button onclick="uploadFile()">Upload and Process</button>
+                    <!-- <input type="file" id="mp3File" accept=".mp3"> -->
+                    <button onclick=" testServerConnection()">Upload and Process</button>
                     <img id="resultImage" style="display:none;"/>
     
                 </form>

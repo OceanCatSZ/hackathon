@@ -84,7 +84,7 @@ function uploadFile() {
 
     const formData = new FormData();
     formData.append('mp3', file);
-    console.log("Uploaded");
+    console.log("Processing");
 
     fetch('http://127.0.0.1:5000/upload', {
         method: 'POST',
@@ -106,4 +106,16 @@ function uploadFile() {
         togglePlay();
         console.error('Upload failed:', e);
     });
+}
+
+function testServerConnection() {
+    fetch('http://127.0.0.1:5000/upload')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.text();
+    })
+    .then(text => alert(text))
+    .catch(error => console.error('Error testing connection:', error));
 }
