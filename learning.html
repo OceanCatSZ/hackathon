@@ -10,7 +10,7 @@
         <!-- Navbar Section -->
         <nav class="navbar">
             <div class="navbar__container">
-                <a href="index.html" id="navbar__logo" style="font-family:'Times New Roman', Times, serif">Tonality音階</a>
+                <a href="index.html" id="navbar__logo" style="font-family:'DM Sans', Times, serif">ToneTutor音階</a>
                 <ul class="navbar__menu">
                     <!-- <li class="navbar__item">
                         <a href="#startLearningTab" class="navbar__links" id="startLearningTab">Start Learning</a>
@@ -30,7 +30,7 @@
                 <script src="app.js"></script>
                 <!-- New code -->
                 <p style = "font-size: 300%; text-align: center;">
-                    <button class= "button1" onclick="togglePlay()">Click here to hear.</button> 
+                    <button class= "button1" onclick="togglePlay()">Listen to Reference</button> 
                 </p>
                 <!-- New code -->
                 <script src="recording.js"></script>
@@ -48,18 +48,18 @@
                 <form id = "uploadForm">
                     <label for="fileInput">Choose a file:</label>
                     <input type="file" id="fileInput" name="fileInput" accept=".mp3">
-                    <button onclick="handleFile()">upload</button>
+                    <button class = "button1" onclick="handleFile()">Upload Recording</button>
                 </form>
             </div>
             <div class = "midtext">
                 <p style = "font-size: 200%; text-align: center">
-                    Spectrogram of your voice:
+                    Your Spectrogram:
                 </p>
                 <p style = "font-size: 200%; text-align: center;">
                     <img src = "tempblank.jpg" width = 400 alt = "test image">
                 </p>
                 <p style = "font-size: 200%; text-align: center;">
-                    Target spectrogram pattern:
+                    Target Spectrogram:
                 </p>
                 <p style = "font-size: 200%; text-align: center;">
                     <img src = "TestImg1.png" width = 400 alt = "test image">

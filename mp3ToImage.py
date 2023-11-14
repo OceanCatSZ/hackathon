@@ -4,14 +4,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
 import io
-
-    
 import librosa
 import librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
-def returnImage():
+
+def returnImage(recordingFile):
     filename = 'Recordings\\a1_FV1_MP3.mp3'
     y, sr = librosa.load(filename)
 
@@ -41,7 +40,3 @@ def returnImage():
     buf.close()
     return im
     
-# def testReturn(image: Image):
-#     return 0
-    
-# testReturn(returnImage())
