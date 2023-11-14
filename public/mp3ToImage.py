@@ -35,7 +35,7 @@ def returnImage(recordingFile):
     im = Image.open(buf)
 
     # Optionally resize
-    im = im.resize((225, 225))
+    # im = im.resize((225, 225))
 
     buf.close()
     return im

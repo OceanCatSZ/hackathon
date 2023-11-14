@@ -3,7 +3,20 @@ let chunks = [];
 
 // import sendMP3 file
 // const sendMP3 = require("./sendMP3")
+var myAudio = new Audio("Recordings\\a1_FV1_MP3.mp3");
+var isPlaying = false;
+function togglePlay() {
+  myAudio.play();
+  
+  // isPlaying ? myAudio.pause() : myAudio.play();
+};
 
+myAudio.onplaying = function() {
+  isPlaying = true;
+};
+myAudio.onpause = function() {
+  isPlaying = false;
+};
 function toggleRecording() {
     const recordButton = document.getElementById('recordButton');
     const audioPlayer = document.getElementById('audioPlayer');
@@ -59,30 +72,38 @@ function downloadRecording() {
     document.body.removeChild(downloadLink);
 }
 
-function sendMP3(filePath) {
-    const FormData = require('form-data');
-    const fs = require('fs');
-    const axios = require('axios');
-  
-    const form = new FormData();
-  
-    form.append('file', fs.createReadStream(filePath));
-  
-    axios.post('http://localhost:5000/upload', form, {
-      headers: form.getHeaders(),
+function uploadFile() {
+    const fileInput = document.getElementById('mp3File');
+
+    const file = fileInput.files[0];
+    if (!file) {
+        console.log("Not a file");
+        alert("Please select an MP3 file.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('mp3', file);
+    console.log("Uploaded");
+
+    fetch('http://127.0.0.1:5000/upload', {
+        method: 'POST',
+        body: formData
     })
-    .then((response) => {
-  
-      console.log('From JS: uploaded successfully.', response.data);
+    .then(response => {
+        console.log("Trying");
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.blob();
     })
-    .catch((error) => {
-      console.error('Error uploading file', error);
+    .then(imageBlob => {
+        const imageUrl = URL.createObjectURL(imageBlob);
+        document.getElementById('resultImage').src = imageUrl;
+        document.getElementById('resultImage').style.display = 'block';
+    })
+    .catch(e => {
+        togglePlay();
+        console.error('Upload failed:', e);
     });
-  }
-  const filePath = "Recording.mp3"; 
-  sendMP3(filePath);
-// 
-function handleFile() {
-  const fileInput = document.getElementById('fileInput');
-  sendMP3(fileInput)
 }
